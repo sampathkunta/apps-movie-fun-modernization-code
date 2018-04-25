@@ -41,6 +41,12 @@ public class AlbumsController {
         return "albums";
     }
 
+    @PostMapping("/add")
+    public void addAlbum(@RequestBody Album album) {
+        albumsBean.addAlbum(album);
+        return;
+    }
+
     @GetMapping("/{albumId}")
     public String details(@PathVariable long albumId, Map<String, Object> model) {
         model.put("album", albumsBean.find(albumId));

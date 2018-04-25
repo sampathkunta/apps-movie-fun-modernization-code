@@ -1,0 +1,27 @@
+---
+applications:
+- name: album-service
+  path: applications/album-service/build/libs/album-service-1.1.0-SNAPSHOT.war
+  services:
+  - album-database
+  - moviefun-s3
+  routes:
+  - route: album-service-sk.apps.longs.pal.pivotal.io
+
+- name: movie-service
+  services:
+  - movie-database
+  path: applications/movie-service/build/libs/movie-service-1.1.0-SNAPSHOT.war
+  routes:
+  - route: movie-service-sk.apps.longs.pal.pivotal.io
+
+- name: movie-fun-app
+  path: applications/movie-fun-app/build/libs/movie-fun-app-1.1.0-SNAPSHOT.war
+  services:
+  - moviefun-s3
+  env:
+    ALBUMS_URL: https://album-service-sk.apps.longs.pal.pivotal.io/albums
+    MOVIES_URL: https://movie-service-sk.apps.longs.pal.pivotal.io/movies
+  routes:
+  - route: movie-fun-app-sk.apps.longs.pal.pivotal.io
+
