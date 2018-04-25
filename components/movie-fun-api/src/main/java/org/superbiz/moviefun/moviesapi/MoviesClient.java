@@ -4,6 +4,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import static org.springframework.http.HttpMethod.GET;
@@ -19,6 +20,8 @@ public class MoviesClient {
     public MoviesClient(String moviesUrl, RestOperations restOperations) {
         this.moviesUrl = moviesUrl;
         this.restOperations = restOperations;
+        System.out.println("Rest Template Type::: " + restOperations.getClass().getName());
+
     }
 
     public void addMovie(MovieInfo movie) {
