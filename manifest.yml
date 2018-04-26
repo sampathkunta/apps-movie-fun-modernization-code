@@ -23,6 +23,7 @@ applications:
   services:
   - movie-fun-config
   - moviefun-s3
+  - movie-fun-circuit-breaker
   env:
     ALBUMS_URL: http://album-service.cfapps-02.haas-66.pez.pivotal.io/albums
     MOVIES_URL: http://movie-service.cfapps-02.haas-66.pez.pivotal.io/movies
